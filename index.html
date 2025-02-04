@@ -2,141 +2,197 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Project Hosting Server</title>
+    <title>:gndoipgnbi - Music Theory Central</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+            font-family: 'Open Sans', Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-        #file-upload {
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        /* 2010s Skeuomorphic Ribbon Effect */
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 80%;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            z-index: -1;
+            border-radius: 0 0 20px 20px;
+        }
+        nav {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            color: #f1c40f;
+            transform: scale(1.1);
+        }
+        .content {
+            padding: 20px;
+        }
+        .instrument-section {
+            background-color: #ecf0f1;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+        /* 2010s Glossy Button Style */
+        .skeuomorphic-button {
+            background: linear-gradient(to bottom, #f1c40f, #f39c12);
+            border: 2px solid #d35400;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .skeuomorphic-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.2);
+            transform: rotate(-45deg);
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
             margin: 20px 0;
         }
-        #project-list {
-            text-align: left;
-            margin-top: 20px;
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 5px solid #2c3e50;
+            border-radius: 10px;
         }
-        .project-item {
-            background-color: #f4f4f4;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
+        /* 2010s Parallax-like Effect */
+        .parallax-section {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin: 20px 0;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://i0.wp.com/www.paulcecchettimusic.com/wp-content/uploads/2018/12/percussion-section.jpeg?fit=800%2C532&ssl=1');
         }
     </style>
 </head>
 <body>
-    <h1>Project Hosting Server</h1>
-    <input type="file" id="folder-upload" webkitdirectory directory multiple>
-    <div id="project-list"></div>
+    <div class="container">
+        <header>
+            <h1>:gndoipgnbi</h1>
+            <p>Your Ultimate Music Theory & Instrument Resource</p>
+        </header>
 
-    <script>
-        const folderUpload = document.getElementById('folder-upload');
-        const projectList = document.getElementById('project-list');
-        let hostedProjects = {};
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Pitched Instruments</a>
+            <a href="#">Percussion</a>
+            <a href="#">Theory</a>
+            <a href="#">Resources</a>
+        </nav>
 
-        folderUpload.addEventListener('change', async (event) => {
-            const files = event.target.files;
-            const projectFolder = {};
+        <div class="content">
+            <div class="video-container">
+                <iframe src="videoplayback.mp4" frameborder="0" allowfullscreen></iframe>
+            </div>
 
-            // Group files by project folder
-            for (let file of files) {
-                const projectName = file.webkitRelativePath.split('/')[0];
-                if (!projectFolder[projectName]) {
-                    projectFolder[projectName] = [];
-                }
-                projectFolder[projectName].push(file);
-            }
+            <div class="parallax-section">
+                <h2>Explore the World of Percussion</h2>
+                <p>Discover the rhythmic heartbeat of music across genres and cultures</p>
+            </div>
 
-            // Process each project
-            for (let [projectName, projectFiles] of Object.entries(projectFolder)) {
-                // Check if project has an index.html
-                const hasIndexHtml = projectFiles.some(file => 
-                    file.webkitRelativePath.endsWith('index.html')
-                );
+            <section class="instrument-section">
+                <h2>Pitched Percussion Instruments</h2>
+                <p>Explore the fascinating world of instruments that produce both rhythm and definitive musical tones!</p>
+                
+                <div>
+                    <h3>Xylophone</h3>
+                    <p>A classic pitched percussion instrument with wooden bars of varying lengths that produce distinct musical notes when struck.</p>
+                    <button class="skeuomorphic-button">Learn More</button>
+                </div>
 
-                if (hasIndexHtml) {
-                    // Create project div
-                    const projectDiv = document.createElement('div');
-                    projectDiv.classList.add('project-item');
-                    
-                    // Project name
-                    const nameEl = document.createElement('h3');
-                    nameEl.textContent = projectName;
-                    projectDiv.appendChild(nameEl);
+                <div>
+                    <h3>Marimba</h3>
+                    <p>Similar to a xylophone but with larger, deeper-toned resonating tubes underneath each bar, creating a richer sound.</p>
+                    <button class="skeuomorphic-button">Explore Marimba</button>
+                </div>
+            </section>
 
-                    // Create local hosting button
-                    const hostButton = document.createElement('button');
-                    hostButton.textContent = 'Host Project';
-                    hostButton.onclick = () => hostProject(projectName, projectFiles);
-                    projectDiv.appendChild(hostButton);
+            <section class="instrument-section">
+                <h2>Unpitched Percussion Instruments</h2>
+                <p>Discover instruments that create rhythmic sounds without definitive musical pitches!</p>
 
-                    projectList.appendChild(projectDiv);
-                    hostedProjects[projectName] = projectFiles;
-                }
-            }
-        });
+                <div>
+                    <h3>Bass Drum</h3>
+                    <p>A large membranophone that provides deep, thunderous rhythmic foundation in many musical ensembles.</p>
+                    <button class="skeuomorphic-button">Drum Details</button>
+                </div>
 
-        function hostProject(projectName, files) {
-            // Create a local file system for the project
-            const projectFrame = document.createElement('iframe');
-            projectFrame.style.width = '100%';
-            projectFrame.style.height = '500px';
-            projectFrame.style.border = '1px solid #ccc';
+                <div>
+                    <h3>Tambourine</h3>
+                    <p>A hand-held instrument with metal jingles that creates crisp, cutting rhythmic sounds when shaken or struck.</p>
+                    <button class="skeuomorphic-button">Tambourine Info</button>
+                </div>
+            </section>
 
-            // Render project in iframe
-            const projectContent = createProjectContent(files);
-            projectFrame.srcdoc = projectContent;
-
-            // Replace or append the iframe
-            const existingFrame = document.querySelector(`iframe[data-project="${projectName}"]`);
-            if (existingFrame) {
-                existingFrame.replaceWith(projectFrame);
-            } else {
-                projectFrame.setAttribute('data-project', projectName);
-                projectList.appendChild(projectFrame);
-            }
-        }
-
-        function createProjectContent(files) {
-            // Find and prioritize index.html
-            const indexHtml = files.find(file => 
-                file.webkitRelativePath.endsWith('index.html')
-            );
-
-            if (!indexHtml) return 'No index.html found';
-
-            // Read files as text
-            const readFileAsText = (file) => {
-                return new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onload = (e) => resolve(e.target.result);
-                    reader.onerror = reject;
-                    reader.readAsText(file);
-                });
-            };
-
-            // This is a simplified version. Real implementation would be more complex
-            return `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Hosted Project</title>
-                    <style>
-                        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-                    </style>
-                </head>
-                <body>
-                    <h2>Project Loaded</h2>
-                    <p>Files in this project:</p>
+            <section class="instrument-section">
+                <h2>Learning Resources</h2>
+                <div>
+                    <h3>Professional Development</h3>
+                    <p>Comprehensive resources for music educators and aspiring percussionists.</p>
                     <ul>
-                        ${files.map(f => `<li>${f.webkitRelativePath}</li>`).join('')}
+                        <li>Certification Programs</li>
+                        <li>Teaching Methodology Workshops</li>
+                        <li>Performance Technique Masterclasses</li>
                     </ul>
-                </body>
-                </html>
-            `;
-        }
-    </script>
+                </div>
+            </section>
+        </div>
+    </div>
 </body>
 </html>
